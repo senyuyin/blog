@@ -13,10 +13,13 @@ import {
 } from "react-router-dom";
 import { Context } from "./context/Context";
 import { useContext } from "react";
+import axios from "axios";
 
 function App() {
 
   const {user} = useContext(Context);
+  axios.defaults.baseURL = 'https://vast-plains-73739.herokuapp.com/api/';
+  axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   
   return (
     <Router>

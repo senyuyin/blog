@@ -2,6 +2,7 @@ import './write.css'
 import { useState,useContext } from 'react'
 import axios from 'axios'
 import { Context } from '../../context/Context'
+import browserHistory from '../../history/history'
 
 export default function Write() {
     const [title, setTitle] = useState('')
@@ -32,7 +33,9 @@ export default function Write() {
         try {
            const res = await axios.post("/posts", newPost);
            console.log(res.data)
-           window.location.replace('/post/'+ res.data._id);
+        //    window.location.replace('/post/'+ res.data._id);
+           browserHistory.replace({pathname: '/post/'+ res.data._id});
+           browserHistory.go(0);
         } catch (error) {
             
         }
